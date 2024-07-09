@@ -2,6 +2,7 @@ from flask import Flask, flash, request, redirect, url_for, render_template
 import os
 from werkzeug.utils import secure_filename
 import roboflow
+import cv2
 
 rf = roboflow.Roboflow(api_key='fXKYJZEGo61jhtWmaGPu')
 project = rf.workspace().project("furniture-detection-t6j8e")
@@ -48,9 +49,12 @@ def upload_image():
 def display_image(filename):
     im_path = "C:\\Users\\prabh\\Desktop\\Courses\\Python\\Flask\\image handling\\static\\uploads\\"
     path = os.path.join(im_path, filename)
+    image = cv2.imread(path, cv2.IMREAD_COLOR)
+    image = cv2.resize(image, (224, 224))
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    image = image / 255.0
     prediction = model.predict(path)
     dict_pred = prediction.__dict__
-    print(dict_pred)
     pred_class = []
     dict_pred = dict_pred['predictions']
     pred = dict_pred[0]
@@ -59,7 +63,6 @@ def display_image(filename):
     pred_class.append(pred1['class'])
     pred2 = dict_pred[2]
     pred_class.append(pred2['class'])
-    print(pred_class)
 
     return render_template('index.html', filename=filename, pred_class=pred_class)
 

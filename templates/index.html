@@ -38,7 +38,11 @@
                 <img src="{{ url_for('static', filename='uploads/' + filename) }}" style="max-width: 500px; max-height: 500px;">
                 {% if pred_class %}
                 <h2>Predicted Class:</h2>
-                <p>{{ pred_class }}</p>
+                <ul>
+                {% for i in pred_class %}
+                <li>{{ i }}</li>
+                {% endfor %}
+                </ul>
                 {% endif %}
             </div>
             {% endif %}
