@@ -3,6 +3,7 @@ import os
 from werkzeug.utils import secure_filename
 import roboflow
 import cv2
+from matplotlib import pyplot as plt
 
 rf = roboflow.Roboflow(api_key='fXKYJZEGo61jhtWmaGPu')
 project = rf.workspace().project("furniture-detection-t6j8e")
@@ -13,7 +14,7 @@ model.overlap = 25
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = r'C:\Users\prabh\Desktop\Courses\Python\Flask\image handling\static\uploads'
+UPLOAD_FOLDER = r'C:\Users\prabh\Desktop\furnish.ai\webapp\static\uploads'
 app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
@@ -46,15 +47,17 @@ def upload_image():
 
 @app.route('/display/<filename>')
 def display_image(filename):
-    im_path = "C:\\Users\\prabh\\Desktop\\Courses\\Python\\Flask\\image handling\\static\\uploads\\"
-    path = os.path.join(im_path, filename)
-    
-    image = cv2.imread(path, cv2.IMREAD_COLOR)
-    image = cv2.resize(image, (224, 224))
+    im_path = "C:\\Users\\prabh\\Desktop\\furnish.ai\\webapp\\static\\uploads\\"
+    master_path = os.path.join(im_path, filename)
+    child_name = '_temp'+filename
+    child_path = os.path.join(im_path, child_name)
+
+    image = cv2.imread(master_path,     )
+    image = cv2.resize(image, (512, 512))
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     image = image / 255.0
     
-    prediction = model.predict(path)
+    prediction = model.predict(master_path)
     dict_pred = prediction.__dict__
     pred_class = []
     dict_pred = dict_pred['predictions']
@@ -64,6 +67,8 @@ def display_image(filename):
     pred_class.append(pred1['class'])
     pred2 = dict_pred[2]
     pred_class.append(pred2['class'])
+
+    cv2.imwrite(child_path, image)
 
     return render_template('index.html', filename=filename, pred_class=pred_class)
 
