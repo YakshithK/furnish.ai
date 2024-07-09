@@ -2,6 +2,25 @@
 <html>
 <head>
     <title>Furnish.AI</title>
+    <style>
+        .style-image {
+            max-width: 100px;
+            max-height: 100px;
+            margin: 10px;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+        .selected {
+            border-color: blue;
+        }
+    </style>
+    <script>
+        function selectStyle(styleId) {
+            document.querySelectorAll('.style-image').forEach(img => img.classList.remove('selected'));
+            document.getElementById(styleId).classList.add('selected');
+            document.getElementById('selectedStyle').value = styleId;
+        }
+    </script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
@@ -30,6 +49,11 @@
                 <p>
                     <input type="submit" value="Submit" class="btn btn-info">
                 </p>
+                <label>Choose a Style:</label><br>
+                <img src="{{ url_for('static', filename='styles/style1.jpg') }}" class="style-image" id="style1" onclick="selectStyle('style1')">
+                <img src="{{ url_for('static', filename='styles/style2.jpg') }}" class="style-image" id="style2" onclick="selectStyle('style2')">
+                <img src="{{ url_for('static', filename='styles/style3.jpg') }}" class="style-image" id="style3" onclick="selectStyle('style3')">
+                <input type="hidden" id="selectedStyle" name="selected_style" value="">
             </form>
 
             {% if filename %}

@@ -5,6 +5,8 @@ import roboflow
 import cv2
 from matplotlib import pyplot as plt
 
+style = []
+
 rf = roboflow.Roboflow(api_key='fXKYJZEGo61jhtWmaGPu')
 project = rf.workspace().project("furniture-detection-t6j8e")
 model = project.version("3").model
@@ -40,10 +42,13 @@ def upload_image():
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        selected_style = request.form.get('selected_style')
+        style.append(selected_style)
         flash('Image successfully uploaded and displayed below')
         return redirect(url_for('display_image', filename=filename))
     else:
         flash('Allowed image types are - png, jpg, jpeg, gif')
+        return redirect(request.url)
 
 @app.route('/display/<filename>')
 def display_image(filename):
@@ -51,12 +56,14 @@ def display_image(filename):
     master_path = os.path.join(im_path, filename)
     child_name = '_temp'+filename
     child_path = os.path.join(im_path, child_name)
-
     image = cv2.imread(master_path,     )
     image = cv2.resize(image, (512, 512))
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     image = image / 255.0
-    
+
+    selected_style = style[0]
+    print(selected_style)
+
     prediction = model.predict(master_path)
     dict_pred = prediction.__dict__
     pred_class = []
@@ -69,7 +76,6 @@ def display_image(filename):
     pred_class.append(pred2['class'])
 
     cv2.imwrite(child_path, image)
-
     return render_template('index.html', filename=filename, pred_class=pred_class)
 
 if __name__ == "__main__":
