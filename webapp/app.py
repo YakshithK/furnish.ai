@@ -43,6 +43,7 @@ def upload_image():
         return redirect(url_for('display_image', filename=filename))
     else:
         flash('Allowed image types are - png, jpg, jpeg, gif')
+
 @app.route('/display/<filename>')
 def display_image(filename):
     im_path = "C:\\Users\\prabh\\Desktop\\Courses\\Python\\Flask\\image handling\\static\\uploads\\"
