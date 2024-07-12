@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 def load_images(folder):
     images = []
     for filename in sorted(os.listdir(folder), key=lambda x: int(os.path.splitext(x)[0])):
+        print(filename)
         img = cv2.imread(os.path.join(folder, filename))
         if img is not None:
             img = cv2.resize(img, (256, 256))
@@ -76,15 +77,12 @@ def train_step(input_image, target, epoch):
     return gen_loss, disc_loss
 
 # Training loop
-EPOCHS = 150
+EPOCHS = 1000
 for epoch in range(EPOCHS):
     start = datetime.datetime.now()
     for input_image, target in dataset:
         gen_loss, disc_loss = train_step(input_image, target, epoch)
     print(f'Epoch {epoch+1}, Generator Loss: {gen_loss}, Discriminator Loss: {disc_loss}, Time: {datetime.datetime.now() - start}')
-
-# Save the trained generator model
-generator.save('saved_generator')
 
 def preprocess_image(image_path):
     img = cv2.imread(image_path)

@@ -50,9 +50,10 @@
                     <input type="submit" value="Submit" class="btn btn-info">
                 </p>
                 <label>Choose a Style:</label><br>
-                <img src="{{ url_for('static', filename='styles/style1.jpg') }}" class="style-image" id="style1" onclick="selectStyle('style1')">
-                <img src="{{ url_for('static', filename='styles/style2.jpg') }}" class="style-image" id="style2" onclick="selectStyle('style2')">
-                <img src="{{ url_for('static', filename='styles/style3.jpg') }}" class="style-image" id="style3" onclick="selectStyle('style3')">
+                <img src="{{ url_for('static', filename='styles/Modern.jpg') }}" class="style-image" id="Modern" onclick="selectStyle('Modern')">
+                <img src="{{ url_for('static', filename='styles/Basic.jpg') }}" class="style-image" id="Basic" onclick="selectStyle('Basic')">
+                <img src="{{ url_for('static', filename='styles/Cozy.jpg') }}" class="style-image" id="Cozy" onclick="selectStyle('Cozy')">
+                <img src="{{ url_for('static', filename='styles/Antique.jpg') }}" class="style-image" id="Antique" onclick="selectStyle('Antique')">
                 <input type="hidden" id="selectedStyle" name="selected_style" value="">
             </form>
 
@@ -60,10 +61,18 @@
             <div>
                 <h2>Uploaded Image:</h2>
                 <img src="{{ url_for('static', filename='uploads/' + filename) }}" style="max-width: 500px; max-height: 500px;">
-                {% if pred_class %}
-                <h2>Predicted Class:</h2>
+                {% if pred_items %}
+                <h2>Furniture Items:</h2>
                 <ul>
-                {% for i in pred_class %}
+                {% for i in pred_items %}
+                <li>{{ i }}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+                {% if new_items %}
+                <h2>Recomended Items:</h2>
+                <ul>
+                {% for i in new_items %}
                 <li>{{ i }}</li>
                 {% endfor %}
                 </ul>

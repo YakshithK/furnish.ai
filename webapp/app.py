@@ -7,6 +7,11 @@ from matplotlib import pyplot as plt
 
 style = []
 
+database = {'Modern' :['Bed', 'Lamp', 'Nightstand', 'Dresser', 'Desk', 'Mirror', 'Rug'],
+            'Cozy' :['Bed', 'Lamp', 'Nightstand', 'Dresser', 'Desk', 'Mirror', 'Rug'],
+            'Basic' :['Bed', 'Lamp', 'Nightstand', 'Dresser', 'Desk', 'Mirror', 'Rug'],
+            'Antique' :['Bed', 'Lamp', 'Nightstand', 'Dresser', 'Desk', 'Mirror', 'Rug']}
+
 rf = roboflow.Roboflow(api_key='fXKYJZEGo61jhtWmaGPu')
 project = rf.workspace().project("furniture-detection-t6j8e")
 model = project.version("3").model
@@ -54,29 +59,30 @@ def upload_image():
 def display_image(filename):
     im_path = "C:\\Users\\prabh\\Desktop\\furnish.ai\\webapp\\static\\uploads\\"
     master_path = os.path.join(im_path, filename)
-    child_name = '_temp'+filename
-    child_path = os.path.join(im_path, child_name)
-    image = cv2.imread(master_path,     )
-    image = cv2.resize(image, (512, 512))
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    image = image / 255.0
+
+    image = cv2.imread(master_path)
+    image = cv2.resize(image, (0, 0), fx=0.5, fy=0.5)
 
     selected_style = style[0]
     print(selected_style)
 
+    master_items = database[selected_style]
+
     prediction = model.predict(master_path)
     dict_pred = prediction.__dict__
-    pred_class = []
+    pred_items = []
     dict_pred = dict_pred['predictions']
     pred = dict_pred[0]
-    pred_class.append(pred['class'])
+    pred_items.append(pred['class'])
     pred1 = dict_pred[1]
-    pred_class.append(pred1['class'])
+    pred_items.append(pred1['class'])
     pred2 = dict_pred[2]
-    pred_class.append(pred2['class'])
+    pred_items.append(pred2['class'])
 
-    cv2.imwrite(child_path, image)
-    return render_template('index.html', filename=filename, pred_class=pred_class)
+    new_items = [item for item in master_items if item not in pred_items]
+    
+    #cv2.imwrite(master_path, image)
+    return render_template('index.html', filename=filename, pred_items=pred_items, new_items=new_items)
 
 if __name__ == "__main__":
     app.run()
