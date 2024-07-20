@@ -6,10 +6,9 @@ def create_database():
     c.execute('''
         CREATE TABLE IF NOT EXISTS furniture (
             id INTEGER PRIMARY KEY,
-            style TEXT,
-            type TEXT,
-            image_path TEXT,
-            description TEXT
+            category TEXT,
+            name TEXT,
+            image_path TEXT
         )
     ''')
     conn.commit()
