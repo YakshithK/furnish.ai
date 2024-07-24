@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import os
 
-def split_string(input_string):
+'''def split_string(input_string):
     first_dash_pos = input_string.find('-')
     second_part_start = input_string.find('-', first_dash_pos + 1)
 
@@ -25,7 +25,11 @@ df = df[df['valid_link']]
 
 print(df.head())
 print('-'*50)
+'''
 
+descs = []
+
+df = pd.read_csv('filtered_furniture.csv')
 image_directory = 'database/images'
 
 # Create the directory if it doesn't exist
@@ -48,6 +52,15 @@ for row in df.iterrows():
 
     # Find all image tags
     images = soup.find_all('img')
+    paragraphs = soup.find_all('p')
+
+    for paragraph in paragraphs:
+        if 'class' in paragraph.attrs:
+            clas = paragraph.attrs['class'][0]
+
+            if clas == 'pip-product-summary__description':
+                descs.append(paragraph)
+                
 
     # Flag to stop after the first valid image
     found_image = False
@@ -81,3 +94,6 @@ for row in df.iterrows():
                     break
             if found_image:
                 break
+
+df = pd.DataFrame(descs, columns=['Description'])
+df.to_csv('descriptions.csv', index=False)

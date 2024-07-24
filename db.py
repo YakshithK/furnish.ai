@@ -57,10 +57,14 @@ for path in os.listdir(master_path):
         if i in f_name_str:
             f_name_str.remove(i)
             del f_name_str[-1]
+            if f_name_str[-1].isnumeric():
+                del f_name_str[-1]
     
     f_name_str = '-'.join(f_name_str)
 
-    full_path = os.path.join(master_path, path)
+    
+
+    full_path = master_path + '/' + path
     data.append((f_cate_str, f_name_str, full_path))
 
 # Convert data to a pandas DataFrame
