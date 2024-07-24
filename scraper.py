@@ -38,7 +38,7 @@ for row in df.iterrows():
     name = data['category']
     item_desc = data['short_description']
     name_id = f"{name}-{item_desc}"
-    name_id = name_id.replace(' ', '-').replace('/', '-')
+    name_id = name_id.replace(' ', '-').replace('/', '').replace(',', '')
 
     url = data['link']
 
