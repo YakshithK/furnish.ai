@@ -26,10 +26,13 @@ data = []
 
 # Process each file in the master_path directory
 for index, row in df.iterrows():
-    path = str(row.iloc[-1])
-    description = str(row.iloc[-2])
-    path_no_ext = path.replace('.jpg', '')
+    path = str(row.iloc[-2])
+    description = str(row.iloc[-1])
     
+    path_no_ext = path.replace('.jpg', '')
+
+    path_no_ext = path_no_ext.replace('database/images\\', '')
+
     readable = path_no_ext.split(',')
     if not readable:
         continue
@@ -68,8 +71,7 @@ for index, row in df.iterrows():
 
     
 
-    full_path = master_path + '/' + path
-    data.append((f_cate_str, f_name_str, full_path, description))
+    data.append((f_cate_str, f_name_str, path, description))
 
 # Convert data to a pandas DataFrame
 df = pd.DataFrame(data, columns=['Category', 'Name', 'Image Path', 'Description'])

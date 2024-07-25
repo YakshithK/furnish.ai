@@ -87,12 +87,12 @@ for row in df.iterrows():
                         f.write(img_data)
                     print(f"Saved: {img_path}")
                     temp_data.append(img_path)
+                    temp_data.append(text)
                     # Set the flag to True and break out of the loop
                     found_image = True
                     break
             if found_image:
                 descs.append(temp_data)
-                print(temp_data)
                 break
 
 df = pd.DataFrame(descs, columns=['Description', 'Path'])
