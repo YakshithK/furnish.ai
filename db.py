@@ -25,9 +25,9 @@ master_path = 'database/images'
 data = []
 
 # Process each file in the master_path directory
-for row in df.iterrows():
-    path = row[-1]
-    description = path[-2]
+for index, row in df.iterrows():
+    path = str(row.iloc[-1])
+    description = str(row.iloc[-2])
     path_no_ext = path.replace('.jpg', '')
     
     readable = path_no_ext.split(',')

@@ -53,15 +53,12 @@ for row in df.iterrows():
 
     # Find all image tags
     images = soup.find_all('img')
-    paragraphs = soup.find_all('p')
-
-    for paragraph in paragraphs:
-        if 'class' in paragraph.attrs:
-            clas = paragraph.attrs['class'][0]
-
-            if clas == 'pip-product-summary__description':
-                temp_data.append(paragraph)
+    description_tag = soup.find('p', class_='pip-product-summary__description')
                 
+    if description_tag:
+        text = description_tag.text.strip()
+    else: 
+        text = 'None'
 
     # Flag to stop after the first valid image
     found_image = False
@@ -95,7 +92,8 @@ for row in df.iterrows():
                     break
             if found_image:
                 descs.append(temp_data)
+                print(temp_data)
                 break
 
-df = pd.DataFrame(descs, columns=['Description'])
-df.to_csv('descriptionss.csv', index=False)
+df = pd.DataFrame(descs, columns=['Description', 'Path'])
+df.to_csv('descriptions.csv', index=False)
