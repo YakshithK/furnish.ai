@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import os
 
-'''def split_string(input_string):
+def split_string(input_string):
     first_dash_pos = input_string.find('-')
     second_part_start = input_string.find('-', first_dash_pos + 1)
 
@@ -25,11 +25,9 @@ df = df[df['valid_link']]
 
 print(df.head())
 print('-'*50)
-'''
 
 descs = []
 
-df = pd.read_csv('filtered_furniture.csv')
 image_directory = 'database/images'
 
 # Create the directory if it doesn't exist
@@ -96,4 +94,4 @@ for row in df.iterrows():
                 break
 
 df = pd.DataFrame(descs, columns=['Description', 'Path'])
-df.to_csv('descriptions.csv', index=False)
+df.to_csv('semi-data.csv', index=False)

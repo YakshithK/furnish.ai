@@ -7,7 +7,7 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
 # Load the dataset
-df = pd.read_csv('furniture_data.csv')
+df = pd.read_csv('final.csv')
 descriptions = df['Description'].fillna('unknown')
 
 # Preprocessing function
@@ -70,4 +70,4 @@ df['Style'] = dominant_topic_series.map(topic_style_mapping)
 print(df[['Description', 'Style']].head())
 
 # Optional: Save the DataFrame with styles to a new CSV
-df.to_csv('furniture_data_with_styles.csv', index=False)
+df.to_csv('final.csv', index=False)

@@ -3,7 +3,7 @@ import pandas as pd
 import sqlite3
 import re
 
-df = pd.read_csv('descriptions.csv')
+df = pd.read_csv('semi-data.csv')
 
 def clean_string(s):
     # Replace non-alphanumeric characters except hyphens with hyphens
@@ -77,45 +77,9 @@ for index, row in df.iterrows():
 df = pd.DataFrame(data, columns=['Category', 'Name', 'Image Path', 'Description'])
 
 # Save DataFrame to a CSV file
-csv_filename = 'furniture_data.csv'
+csv_filename = 'final.csv'
 df.to_csv(csv_filename, index=False)
 
 print(f"Data has been saved to {csv_filename}")
 
-def create_database():
-    conn = sqlite3.connect('database/furniture.db')
-    c = conn.cursor()
-    c.execute('''
-        CREATE TABLE IF NOT EXISTS furniture (
-            id INTEGER PRIMARY KEY,
-            category TEXT,
-            name TEXT,
-            image_path TEXT,
-            description TEXT
-        )
-    ''')
-    conn.commit()
-    conn.close()
 
-create_database()
-
-def populate_database(furniture_items):
-    conn = sqlite3.connect('database/furniture.db')
-    c = conn.cursor()
-    c.executemany('INSERT INTO furniture (category, name, image_path, description) VALUES (?, ?, ?, ?)', furniture_items)
-    conn.commit()
-    conn.close()
-
-populate_database(data)
-
-def fetch_recommendations(detected_items, name):
-    conn = sqlite3.connect('database/furniture.db')
-    c = conn.cursor()
-    recommendations = []
-    for item in detected_items:
-        c.execute('SELECT * FROM furniture WHERE category=? AND name=?', (item, name))
-        recommendations.append(c.fetchone())
-    conn.close()
-    return recommendations
-
-print(fetch_recommendations(['Bar-furniture'], 'Bar-stool'))
