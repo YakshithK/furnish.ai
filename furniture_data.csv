@@ -1,5 +1,5 @@
 Category,Name,Image Path
-Bar-furniture,Bar-stool-63,database/images\Bar-furniture---------Bar-stool----------63-74-cm.jpg
+Bar-furniture,Bar-stool,database/images\Bar-furniture---------Bar-stool----------63-74-cm.jpg
 Bar-furniture,Bar-stool,database/images\Bar-furniture---------Bar-stool----------75-cm.jpg
 Bar-furniture,Bar-stool,database/images\Bar-furniture---------Bar-stool----------76-cm.jpg
 Bar-furniture,Bar-stool,database/images\Bar-furniture---------Bar-stool----------77-cm.jpg
@@ -92,7 +92,7 @@ Bookcases-shelving-units,3-sectionsshelvescabinet,database/images\Bookcases-&-sh
 Bookcases-shelving-units,4-sectionsshelves,database/images\Bookcases-&-shelving-units---------4-sectionsshelves----------179x50x179-cm.jpg
 Bookcases-shelving-units,4-sectionsshelves,database/images\Bookcases-&-shelving-units---------4-sectionsshelves----------307x50x171-cm.jpg
 Bookcases-shelving-units,4-sectionsshelves,database/images\Bookcases-&-shelving-units---------4-sectionsshelves----------344x30x226-cm.jpg
-Bookcases-shelving-units,Adjustable-clothes-rail-46,database/images\Bookcases-&-shelving-units---------Adjustable-clothes-rail----------46-82-cm.jpg
+Bookcases-shelving-units,Adjustable-clothes-rail,database/images\Bookcases-&-shelving-units---------Adjustable-clothes-rail----------46-82-cm.jpg
 Bookcases-shelving-units,Bookcase,database/images\Bookcases-&-shelving-units---------Bookcase----------160x28x202-cm.jpg
 Bookcases-shelving-units,Bookcase,database/images\Bookcases-&-shelving-units---------Bookcase----------160x30x202-cm.jpg
 Bookcases-shelving-units,Bookcase,database/images\Bookcases-&-shelving-units---------Bookcase----------200x28x237-cm.jpg
@@ -168,8 +168,8 @@ Bookcases-shelving-units,Framemesh-basketsshelving-units,database/images\Bookcas
 Bookcases-shelving-units,Framemesh-basketsshelving-units,database/images\Bookcases-&-shelving-units---------Framemesh-basketsshelving-units----------99x51x173-cm.jpg
 Bookcases-shelving-units,Framesclothes-railsshelving-units,database/images\Bookcases-&-shelving-units---------Framesclothes-railsshelving-units----------148x51x173-cm.jpg
 Bookcases-shelving-units,Framew-bsktsclths-rlshlv-uts,database/images\Bookcases-&-shelving-units---------Framew-bsktsclths-rlshlv-uts----------173x51x173-cm.jpg
-Bookcases-shelving-units,Framewire-basketsclothes-rails-142,database/images\Bookcases-&-shelving-units---------Framewire-basketsclothes-rails----------142-178x51x139-cm.jpg
-Bookcases-shelving-units,Framewire-basketsclothes-rails-142,database/images\Bookcases-&-shelving-units---------Framewire-basketsclothes-rails----------142-178x51x173-cm.jpg
+Bookcases-shelving-units,Framewire-basketsclothes-rails,database/images\Bookcases-&-shelving-units---------Framewire-basketsclothes-rails----------142-178x51x139-cm.jpg
+Bookcases-shelving-units,Framewire-basketsclothes-rails,database/images\Bookcases-&-shelving-units---------Framewire-basketsclothes-rails----------142-178x51x173-cm.jpg
 Bookcases-shelving-units,Framewire-basketsclothes-rails,database/images\Bookcases-&-shelving-units---------Framewire-basketsclothes-rails----------99x51x173-cm.jpg
 Bookcases-shelving-units,Framewire-basketstop-shelf,database/images\Bookcases-&-shelving-units---------Framewire-basketstop-shelf----------50x51x70-cm.jpg
 Bookcases-shelving-units,Framewire-basketstop-shelves,database/images\Bookcases-&-shelving-units---------Framewire-basketstop-shelves----------148x51x104-cm.jpg
@@ -193,7 +193,7 @@ Bookcases-shelving-units,Handle,database/images\Bookcases-&-shelving-units------
 Bookcases-shelving-units,Handle,database/images\Bookcases-&-shelving-units---------Handle----------597-mm.jpg
 Bookcases-shelving-units,Handle,database/images\Bookcases-&-shelving-units---------Handle----------720-mm.jpg
 Bookcases-shelving-units,Height-extension-unit,database/images\Bookcases-&-shelving-units---------Height-extension-unit----------80x28x35-cm.jpg
-Bookcases-shelving-units,Hook-for-post-7x5x3-2,database/images\Bookcases-&-shelving-units---------Hook-for-post----------7x5x3-cm-2-pack.jpg
+Bookcases-shelving-units,Hook-for-post-7x5x3,database/images\Bookcases-&-shelving-units---------Hook-for-post----------7x5x3-cm-2-pack.jpg
 Bookcases-shelving-units,Insert-with-1-shelf,database/images\Bookcases-&-shelving-units---------Insert-with-1-shelf----------33x33-cm.jpg
 Bookcases-shelving-units,Insert-with-2-drawers,database/images\Bookcases-&-shelving-units---------Insert-with-2-drawers----------33x33-cm.jpg
 Bookcases-shelving-units,Insert-with-door,database/images\Bookcases-&-shelving-units---------Insert-with-door----------33x33-cm.jpg
@@ -212,13 +212,13 @@ Bookcases-shelving-units,Mesh-basket,database/images\Bookcases-&-shelving-units-
 Bookcases-shelving-units,Mesh-basket,database/images\Bookcases-&-shelving-units---------Mesh-basket----------50x51x15-cm.jpg
 Bookcases-shelving-units,Panelglass-door,database/images\Bookcases-&-shelving-units---------Panelglass-door----------40x192-cm.jpg
 Bookcases-shelving-units,Post,database/images\Bookcases-&-shelving-units---------Post----------110-cm.jpg
-Bookcases-shelving-units,Post-171-2,database/images\Bookcases-&-shelving-units---------Post----------171-cm-2-pack.jpg
+Bookcases-shelving-units,Post-171,database/images\Bookcases-&-shelving-units---------Post----------171-cm-2-pack.jpg
 Bookcases-shelving-units,Post,database/images\Bookcases-&-shelving-units---------Post----------190-cm.jpg
 Bookcases-shelving-units,Shelf,database/images\Bookcases-&-shelving-units---------Shelf----------42x30-cm.jpg
 Bookcases-shelving-units,Shelf,database/images\Bookcases-&-shelving-units---------Shelf----------42x50-cm.jpg
 Bookcases-shelving-units,Shelf,database/images\Bookcases-&-shelving-units---------Shelf----------56x16-cm.jpg
 Bookcases-shelving-units,Shelf,database/images\Bookcases-&-shelving-units---------Shelf----------56x36-cm.jpg
-Bookcases-shelving-units,Shelf-77x28-2,database/images\Bookcases-&-shelving-units---------Shelf----------77x28-cm-2-pack.jpg
+Bookcases-shelving-units,Shelf-77x28,database/images\Bookcases-&-shelving-units---------Shelf----------77x28-cm-2-pack.jpg
 Bookcases-shelving-units,Shelf,database/images\Bookcases-&-shelving-units---------Shelf----------83x30-cm.jpg
 Bookcases-shelving-units,Shelf,database/images\Bookcases-&-shelving-units---------Shelf----------83x50-cm.jpg
 Bookcases-shelving-units,Shelf,database/images\Bookcases-&-shelving-units---------Shelf----------84x54-cm.jpg
@@ -428,7 +428,7 @@ Café-furniture,Table,database/images\Café-furniture---------Table----------125
 Café-furniture,Table,database/images\Café-furniture---------Table----------70x70-cm.jpg
 Chairs,Active-sitstand-support,database/images\Chairs---------Active-sitstand-support.jpg
 Chairs,Armchair,database/images\Chairs---------Armchair.jpg
-Chairs,Bar-stool-63,database/images\Chairs---------Bar-stool----------63-74-cm.jpg
+Chairs,Bar-stool,database/images\Chairs---------Bar-stool----------63-74-cm.jpg
 Chairs,Bar-stool,database/images\Chairs---------Bar-stool----------75-cm.jpg
 Chairs,Bar-stool,database/images\Chairs---------Bar-stool----------76-cm.jpg
 Chairs,Bar-stool,database/images\Chairs---------Bar-stool----------77-cm.jpg
@@ -852,7 +852,7 @@ Tables-desks,Leg-adjustable,database/images\Tables-&-desks---------Leg-adjustabl
 Tables-desks,Leg-cone-shaped,database/images\Tables-&-desks---------Leg-cone-shaped----------70-cm.jpg
 Tables-desks,Leg-with-castor,database/images\Tables-&-desks---------Leg-with-castor----------70-cm.jpg
 Tables-desks,Leg,database/images\Tables-&-desks---------Leg.jpg
-Tables-desks,Nest-of-tables-set-of-2,database/images\Tables-&-desks---------Nest-of-tables-set-of-2----------90x50-cm.jpg
+Tables-desks,Nest-of-tables-set-of,database/images\Tables-&-desks---------Nest-of-tables-set-of-2----------90x50-cm.jpg
 Tables-desks,Nest-of-tables-set-of-2,database/images\Tables-&-desks---------Nest-of-tables-set-of-2.jpg
 Tables-desks,Nursing-pillow,database/images\Tables-&-desks---------Nursing-pillow----------60x50x18-cm.jpg
 Tables-desks,Pouffe,database/images\Tables-&-desks---------Pouffe----------56-cm.jpg

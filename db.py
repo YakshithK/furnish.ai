@@ -3,6 +3,8 @@ import pandas as pd
 import sqlite3
 import re
 
+df = pd.read_csv('descriptions.csv')
+
 def clean_string(s):
     # Replace non-alphanumeric characters except hyphens with hyphens
     s = re.sub(r'[^\w\s-]', '', s)
@@ -23,7 +25,9 @@ master_path = 'database/images'
 data = []
 
 # Process each file in the master_path directory
-for path in os.listdir(master_path):
+for row in df.iterrows():
+    path = row[-1]
+    description = path[-2]
     path_no_ext = path.replace('.jpg', '')
     
     readable = path_no_ext.split(',')
@@ -65,10 +69,10 @@ for path in os.listdir(master_path):
     
 
     full_path = master_path + '/' + path
-    data.append((f_cate_str, f_name_str, full_path))
+    data.append((f_cate_str, f_name_str, full_path, description))
 
 # Convert data to a pandas DataFrame
-df = pd.DataFrame(data, columns=['Category', 'Name', 'Image Path'])
+df = pd.DataFrame(data, columns=['Category', 'Name', 'Image Path', 'Description'])
 
 # Save DataFrame to a CSV file
 csv_filename = 'furniture_data.csv'
@@ -84,7 +88,8 @@ def create_database():
             id INTEGER PRIMARY KEY,
             category TEXT,
             name TEXT,
-            image_path TEXT
+            image_path TEXT,
+            description TEXT
         )
     ''')
     conn.commit()
@@ -95,7 +100,7 @@ create_database()
 def populate_database(furniture_items):
     conn = sqlite3.connect('database/furniture.db')
     c = conn.cursor()
-    c.executemany('INSERT INTO furniture (category, name, image_path) VALUES (?, ?, ?)', furniture_items)
+    c.executemany('INSERT INTO furniture (category, name, image_path, description) VALUES (?, ?, ?, ?)', furniture_items)
     conn.commit()
     conn.close()
 

@@ -38,6 +38,7 @@ if not os.path.exists(image_directory):
 
 # Iterate through each row in the dataframe
 for row in df.iterrows():
+    temp_data = []
     data = row[1]
     name = data['category']
     item_desc = data['short_description']
@@ -59,7 +60,7 @@ for row in df.iterrows():
             clas = paragraph.attrs['class'][0]
 
             if clas == 'pip-product-summary__description':
-                descs.append(paragraph)
+                temp_data.append(paragraph)
                 
 
     # Flag to stop after the first valid image
@@ -88,12 +89,13 @@ for row in df.iterrows():
                         img_data = requests.get(url).content
                         f.write(img_data)
                     print(f"Saved: {img_path}")
-
+                    temp_data.append(img_path)
                     # Set the flag to True and break out of the loop
                     found_image = True
                     break
             if found_image:
+                descs.append(temp_data)
                 break
 
 df = pd.DataFrame(descs, columns=['Description'])
-df.to_csv('descriptions.csv', index=False)
+df.to_csv('descriptionss.csv', index=False)
