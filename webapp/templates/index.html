@@ -27,7 +27,7 @@
 <body>
     <div class="container">
         <div class="row">
-            <h1>Image Handling</h1>
+            <h1>Furnish.AI</h1>
             <h2>Select a file to upload</h2>
             <p>
                 {% with messages = get_flashed_messages() %}
@@ -62,18 +62,18 @@
                 <h2>Uploaded Image:</h2>
                 <img src="{{ url_for('static', filename='uploads/' + filename) }}" style="max-width: 500px; max-height: 500px;">
                 {% if pred_items %}
-                <h2>Furniture Items:</h2>
+                <h2>Detected Furniture Items:</h2>
                 <ul>
-                {% for i in pred_items %}
-                <li>{{ i }}</li>
+                {% for item in pred_items %}
+                <li>{{ item }}</li>
                 {% endfor %}
                 </ul>
                 {% endif %}
-                {% if new_items %}
-                <h2>Recomended Items:</h2>
+                {% if recommendations %}
+                <h2>Recommended Items:</h2>
                 <ul>
-                {% for i in new_items %}
-                <li>{{ i }}</li>
+                {% for item in recomendations %}
+                <li>{{ item }}</li>
                 {% endfor %}
                 </ul>
                 {% endif %}

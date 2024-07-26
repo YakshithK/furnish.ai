@@ -1,12 +1,13 @@
 import os
 import pandas as pd
 import sqlite3
+import random
 
 # Load the DataFrame
 data = pd.read_csv('final.csv')
 
 def create_database():
-    conn = sqlite3.connect('./furniture.db')
+    conn = sqlite3.connect('database/furniture.db')
     c = conn.cursor()
     c.execute('''
         CREATE TABLE IF NOT EXISTS furniture (
@@ -24,7 +25,7 @@ def create_database():
 create_database()
 
 def populate_database(dataframe):
-    conn = sqlite3.connect('./furniture.db')
+    conn = sqlite3.connect('database/furniture.db')
     c = conn.cursor()
     
     # Convert DataFrame to list of tuples
@@ -38,7 +39,7 @@ def populate_database(dataframe):
 populate_database(data)
 
 def fetch_recommendations(detected_items, name):
-    conn = sqlite3.connect('./furniture.db')
+    conn = sqlite3.connect('database/furniture.db')
     c = conn.cursor()
     recommendations = []
     
@@ -48,6 +49,7 @@ def fetch_recommendations(detected_items, name):
     
     conn.close()
     return recommendations
+
 
 # Example usage
 recommendations = fetch_recommendations(['Bar-furniture'], 'Bar-stool')

@@ -4,10 +4,24 @@ from werkzeug.utils import secure_filename
 import roboflow
 import cv2
 from matplotlib import pyplot as plt
+import random
+import sqlite3
+
+def fetch_recommendations(detected_items, name):
+    conn = sqlite3.connect('database/furniture.db')
+    c = conn.cursor()
+    recommendations = []
+    
+    for item in detected_items:
+        c.execute('SELECT * FROM furniture WHERE style=? AND name=?', (item, name))
+        recommendations.extend(c.fetchall())  # Using extend to handle multiple recommendations
+    
+    conn.close()
+    return recommendations
 
 style = []
 
-database = {'Modern' :['Bed', 'Lamp', 'Nightstand', 'Dresser', 'Desk', 'Mirror', 'Rug'],
+database = {'Modern' :['Bed', 'Lamp', 'Nightstand', 'Dresser', 'Desk', 'Mirror', 'Rug', 'Chairs'],
             'Cozy' :['Bed', 'Lamp', 'Nightstand', 'Dresser', 'Desk', 'Mirror', 'Rug'],
             'Basic' :['Bed', 'Lamp', 'Nightstand', 'Dresser', 'Desk', 'Mirror', 'Rug'],
             'Antique' :['Bed', 'Lamp', 'Nightstand', 'Dresser', 'Desk', 'Mirror', 'Rug']}
@@ -80,9 +94,16 @@ def display_image(filename):
     pred_items.append(pred2['class'])
 
     new_items = [item for item in master_items if item not in pred_items]
+
+    recommendations = []
+    for item in new_items:
+        recommendations.extend(fetch_recommendations([selected_style], item))
+
+    # Select a few random recommendations
+    random_recommendations = random.sample(recommendations, min(len(recommendations), 5))
     
     #cv2.imwrite(master_path, image)
-    return render_template('index.html', filename=filename, pred_items=pred_items, new_items=new_items)
+    return render_template('index.html', filename=filename, pred_items=pred_items, recomendations=random_recommendations)
 
 if __name__ == "__main__":
     app.run()

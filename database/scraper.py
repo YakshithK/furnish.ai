@@ -28,7 +28,7 @@ print('-'*50)
 
 descs = []
 
-image_directory = 'database/images'
+image_directory = 'webapp/images'
 
 # Create the directory if it doesn't exist
 if not os.path.exists(image_directory):
