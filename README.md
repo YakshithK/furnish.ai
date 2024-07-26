@@ -99,10 +99,6 @@ furnish.ai/
 
 Contributions are welcome! Please fork the repository and submit a pull request for any changes or additions.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgements
 
 - [Roboflow](https://roboflow.com/)
