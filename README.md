@@ -94,7 +94,7 @@ furnish.ai/
 ├── app.py                        # Main Flask application
 ├── requirements.txt              # Python package dependencies
 └── README.md                     # Project README file
-
+```
 ## Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request for any changes or additions.
