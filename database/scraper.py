@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import os
 
-"""def split_string(input_string):
+def split_string(input_string):
     first_dash_pos = input_string.find('-')
     second_part_start = input_string.find('-', first_dash_pos + 1)
 
@@ -21,7 +21,7 @@ def is_valid_link(url):
 df = pd.read_csv('ikea-dataset.csv')
 
 df['valid_link'] = df['link'].apply(is_valid_link)
-df = df[df['valid_link']]"""
+df = df[df['valid_link']]
 df = pd.read_csv('filtered_furniture.csv')
 print(df.head())
 print('-'*50)

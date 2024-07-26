@@ -101,7 +101,6 @@ def display_image(filename):
 
     # Select a few random recommendations
     random_recommendations = random.sample(recommendations, min(len(recommendations), 5))
-    
 
     #cv2.imwrite(master_path, image)
     return render_template('index.html', filename=filename, pred_items=pred_items, recommendations=random_recommendations)

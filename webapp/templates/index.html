@@ -13,6 +13,17 @@
         .selected {
             border-color: blue;
         }
+        .uploaded-image {
+            max-width: 100%;
+            max-height: 400px;
+        }
+        .recommended-item {
+            max-width: 100%;
+            max-height: 200px;
+        }
+        .recommendations h3 {
+            margin-top: 10px;
+        }
     </style>
     <script>
         function selectStyle(styleId) {
@@ -58,23 +69,37 @@
             </form>
 
             {% if filename %}
-            <div>
-                <h2>Uploaded Image:</h2>
-                <img src="{{ url_for('static', filename='uploads/' + filename) }}" style="max-width: 200px; max-height: 200px;">
-                {% if pred_items %}
-                <h2>Detected Furniture Items:</h2>
-                <ul>
-                {% for item in pred_items %}
-                <li>{{ item }}</li>
-                {% endfor %}
-                </ul>
-                {% endif %}
-                {% if recommendations %}
-                <h2>Recommended Items:</h2>
-                {% for item in recommendations %}
-                <img src="{{ url_for('static', filename = item[3]) }}" style="max-width: 500px; max-height: 500px;">
-                {% endfor %}
-                {% endif %}
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Uploaded Image:</h2>
+                    <img src="{{ url_for('static', filename='uploads/' + filename) }}" class="uploaded-image">
+                    
+                    {% if pred_items %}
+                    <h2>Detected Furniture Items:</h2>
+                    <ul>
+                        {% for item in pred_items %}
+                        <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                
+                <div class="col-md-6">
+                    {% if recommendations %}
+                    <h2>Recommended Items:</h2>
+                    <div class="recommendations">
+                        <ul class="list-unstyled">
+                            {% for rec in recommendations %}
+                            <li>
+                                <img src="{{ url_for('static', filename='images/' + rec[3]) }}" class="recommended-item">
+                                <h3>{{ rec[2] }}</h3>
+                                <p>{{ rec[-2] }}</p>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
             </div>
             {% endif %}
         </div>
