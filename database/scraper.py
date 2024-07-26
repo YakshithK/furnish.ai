@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import os
 
-def split_string(input_string):
+"""def split_string(input_string):
     first_dash_pos = input_string.find('-')
     second_part_start = input_string.find('-', first_dash_pos + 1)
 
@@ -21,14 +21,14 @@ def is_valid_link(url):
 df = pd.read_csv('ikea-dataset.csv')
 
 df['valid_link'] = df['link'].apply(is_valid_link)
-df = df[df['valid_link']]
-
+df = df[df['valid_link']]"""
+df = pd.read_csv('filtered_furniture.csv')
 print(df.head())
 print('-'*50)
 
 descs = []
 
-image_directory = 'webapp/images'
+image_directory = 'webapp/static/images'
 
 # Create the directory if it doesn't exist
 if not os.path.exists(image_directory):
@@ -84,7 +84,7 @@ for row in df.iterrows():
                         img_data = requests.get(url).content
                         f.write(img_data)
                     print(f"Saved: {img_path}")
-                    temp_data.append(img_path)
+                    temp_data.append(img_name)
                     temp_data.append(text)
                     # Set the flag to True and break out of the loop
                     found_image = True

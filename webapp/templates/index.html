@@ -60,7 +60,7 @@
             {% if filename %}
             <div>
                 <h2>Uploaded Image:</h2>
-                <img src="{{ url_for('static', filename='uploads/' + filename) }}" style="max-width: 500px; max-height: 500px;">
+                <img src="{{ url_for('static', filename='uploads/' + filename) }}" style="max-width: 200px; max-height: 200px;">
                 {% if pred_items %}
                 <h2>Detected Furniture Items:</h2>
                 <ul>
@@ -71,11 +71,9 @@
                 {% endif %}
                 {% if recommendations %}
                 <h2>Recommended Items:</h2>
-                <ul>
-                {% for item in recomendations %}
-                <li>{{ item }}</li>
+                {% for item in recommendations %}
+                <img src="{{ url_for('static', filename = item[3]) }}" style="max-width: 500px; max-height: 500px;">
                 {% endfor %}
-                </ul>
                 {% endif %}
             </div>
             {% endif %}
