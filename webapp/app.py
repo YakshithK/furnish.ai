@@ -13,7 +13,7 @@ def fetch_recommendations(detected_items, name):
     recommendations = []
     
     for item in detected_items:
-        c.execute('SELECT * FROM furniture WHERE style=? AND name=?', (item, name))
+        c.execute('SELECT * FROM furniture WHERE style=? AND category=?', (item, name))
         recommendations.extend(c.fetchall())  # Using extend to handle multiple recommendations
     
     conn.close()
@@ -21,10 +21,14 @@ def fetch_recommendations(detected_items, name):
 
 style = []
 
-database = {'Modern' :['Bed', 'Lamp', 'Nightstand', 'Dresser', 'Desk', 'Mirror', 'Rug', 'Chairs'],
-            'Cozy' :['Bed', 'Lamp', 'Nightstand', 'Dresser', 'Desk', 'Mirror', 'Rug'],
-            'Basic' :['Bed', 'Lamp', 'Nightstand', 'Dresser', 'Desk', 'Mirror', 'Rug'],
-            'Antique' :['Bed', 'Lamp', 'Nightstand', 'Dresser', 'Desk', 'Mirror', 'Rug']}
+database = {'Modern' :['Bed', 'Lamp', 'Nightstand', 'Dresser', 'Desk', 'Mirror', 'Rug', 'Chairs', 'Beds', 'Lamps', 'Nightstands', 'Dressers', 'Desks', 'Mirrors', 'Rugs', 'Chair', 
+                       'bed', 'lamp', 'nightstand', 'dresser', 'desk', 'mirror', 'rug', 'chairs', 'beds', 'lamps', 'nightstands', 'dressers', 'desks', 'mirrors', 'rugs', 'chair'],
+            'Cozy' :['Bed', 'Lamp', 'Nightstand', 'Dresser', 'Desk', 'Mirror', 'Rug', 'Chairs', 'Beds', 'Lamps', 'Nightstands', 'Dressers', 'Desks', 'Mirrors', 'Rugs', 'Chair', 
+                       'bed', 'lamp', 'nightstand', 'dresser', 'desk', 'mirror', 'rug', 'chairs', 'beds', 'lamps', 'nightstands', 'dressers', 'desks', 'mirrors', 'rugs', 'chair'],
+            'Basic' :['Bed', 'Lamp', 'Nightstand', 'Dresser', 'Desk', 'Mirror', 'Rug', 'Chairs', 'Beds', 'Lamps', 'Nightstands', 'Dressers', 'Desks', 'Mirrors', 'Rugs', 'Chair', 
+                       'bed', 'lamp', 'nightstand', 'dresser', 'desk', 'mirror', 'rug', 'chairs', 'beds', 'lamps', 'nightstands', 'dressers', 'desks', 'mirrors', 'rugs', 'chair'],
+            'Antique' :['Bed', 'Lamp', 'Nightstand', 'Dresser', 'Desk', 'Mirror', 'Rug', 'Chairs', 'Beds', 'Lamps', 'Nightstands', 'Dressers', 'Desks', 'Mirrors', 'Rugs', 'Chair', 
+                       'bed', 'lamp', 'nightstand', 'dresser', 'desk', 'mirror', 'rug', 'chairs', 'beds', 'lamps', 'nightstands', 'dressers', 'desks', 'mirrors', 'rugs', 'chair']}
 
 rf = roboflow.Roboflow(api_key='fXKYJZEGo61jhtWmaGPu')
 project = rf.workspace().project("furniture-detection-t6j8e")
@@ -86,12 +90,8 @@ def display_image(filename):
     dict_pred = prediction.__dict__
     pred_items = []
     dict_pred = dict_pred['predictions']
-    pred = dict_pred[0]
-    pred_items.append(pred['class'])
-    pred1 = dict_pred[1]
-    pred_items.append(pred1['class'])
-    pred2 = dict_pred[2]
-    pred_items.append(pred2['class'])
+    for pred in dict_pred:
+        pred_items.append(pred['class'])
 
     new_items = [item for item in master_items if item not in pred_items]
 
@@ -100,10 +100,10 @@ def display_image(filename):
         recommendations.extend(fetch_recommendations([selected_style], item))
 
     # Select a few random recommendations
-    random_recommendations = random.sample(recommendations, min(len(recommendations), 5))
+    recommendations = random.sample(recommendations, min(len(recommendations), 5))
 
     #cv2.imwrite(master_path, image)
-    return render_template('index.html', filename=filename, pred_items=pred_items, recommendations=random_recommendations)
+    return render_template('index.html', filename=filename, pred_items=pred_items, recommendations=recommendations)
 
 if __name__ == "__main__":
     app.run()
