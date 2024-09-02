@@ -2,6 +2,9 @@
 
 Furnish.AI is a web application designed to assist newly moved homeowners in furnishing their homes. Using computer vision and machine learning, the application detects existing furniture in an uploaded room image and recommends new items based on a selected style.
 
+![image](https://github.com/user-attachments/assets/47f60ad8-778a-466f-bcbc-c77381d072aa)
+
+
 ## Features
 
 - Upload an image of your room
