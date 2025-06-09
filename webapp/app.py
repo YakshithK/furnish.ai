@@ -8,7 +8,7 @@ import random
 import sqlite3
 
 def fetch_recommendations(detected_items, name):
-    conn = sqlite3.connect('database/furniture.db')
+    conn = sqlite3.connect('furniture.db')
     c = conn.cursor()
     recommendations = []
     
